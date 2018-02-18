@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Filmasia</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+
+    <string name="search_film">Write your film name to get info</string>
+    <string name="title">Title</string>
+    <string name="year">Year</string>
+    <string name="Genre">Type</string>
+    <string name="imdbRating">IMBD Rating</string>
+
+
+    <string name="pref_show_year_key" translatable="false">show_year</string>
+    <string name="pref_show_year_title">Show Year</string>
+    <string name="hidden">Hidden</string>
+    <string name="shown">Shown</string>
+
+    <string name="pref_color_title">Result Text Color</string>
+    <string name="pref_color_key">change_color</string>
+
+    <string name="pref_red_color_label">Red</string>
+    <string name="pref_blue_color_label">Blue</string>
+    <string name="pref_green_color_label">Green</string>
+    <string name="pref_black_color_label">Black</string>
+
+    <string name="pref_red_color_value" translatable="false">red</string>
+    <string name="pref_blue_color_value" translatable="false">blue</string>
+    <string name="pref_green_color_value" translatable="false">green</string>
+    <string name="pref_black_color_value" translatable="false">black</string>
+
+    <string name="pref_size_default_value" translatable="false">16</string>
+    <string name="pref_size_title">Result Text Size</string>
+    <string name="pref_size_key" translatable="false">change_size</string>
+
+
+</resources>

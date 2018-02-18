@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:defaultValue="@bool/show_year_value"
+        android:title="@string/pref_show_year_title"
+        android:summaryOff="@string/hidden"
+        android:summaryOn="@string/shown"
+        android:key="@string/pref_show_year_key"/>
+
+    <ListPreference
+        android:defaultValue="@string/pref_black_color_value"
+        android:title="@string/pref_color_title"
+        android:key="@string/pref_color_key"
+        android:entries="@array/color_array_labels"
+        android:entryValues="@array/color_array_values" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_size_default_value"
+        android:title="@string/pref_size_title"
+        android:key="@string/pref_size_key"/>
+
+</PreferenceScreen>
