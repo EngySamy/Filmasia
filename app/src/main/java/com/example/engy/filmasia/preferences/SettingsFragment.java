@@ -1,4 +1,4 @@
-package com.example.engy.filmasia;
+package com.example.engy.filmasia.preferences;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,10 +10,13 @@ import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceScreen;
 import android.widget.Toast;
 
+import com.example.engy.filmasia.R;
+
 /**
  * Created by Engy on 2/17/2018.
  */
 
+//This is the class for fragment of the settings to be used in SettingsActivity
 public class SettingsFragment extends PreferenceFragmentCompat
         implements SharedPreferences.OnSharedPreferenceChangeListener,Preference.OnPreferenceChangeListener {  //1.
     @Override

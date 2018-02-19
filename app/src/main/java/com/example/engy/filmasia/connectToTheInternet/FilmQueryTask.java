@@ -1,10 +1,12 @@
-package com.example.engy.filmasia;
+package com.example.engy.filmasia.connectToTheInternet;
 
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import com.example.engy.filmasia.preferences.SettingsUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,12 +18,12 @@ import java.net.URL;
  * Created by Engy on 2/17/2018.
  */
 
-class FilmQueryTask extends AsyncTask<URL,Void,String> {
+public class FilmQueryTask extends AsyncTask<URL,Void,String> {
 
     private TableLayout tableLayout;
     private TextView status;
 
-    FilmQueryTask(TableLayout table,TextView stat,boolean year){
+    public FilmQueryTask(TableLayout table,TextView stat,boolean year){
         status=stat;
         tableLayout=table;
     }

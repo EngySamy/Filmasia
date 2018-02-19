@@ -1,4 +1,4 @@
-package com.example.engy.filmasia;
+package com.example.engy.filmasia.connectToTheInternet;
 
 import android.net.Uri;
 
@@ -21,7 +21,7 @@ public class Search {
     private final static String WEBSITE_URL="http://www.omdbapi.com";// "https://api.github.com/search/repositories";    //"https://www.elcinema.com/en/search";
     private final static String PARAM_QUERY="t";
 
-    static URL buildUrl(String query){
+    public static URL buildUrl(String query){
         Uri builtUri=Uri.parse(WEBSITE_URL).buildUpon()
                 .appendQueryParameter("apikey","16879612")
                 .appendQueryParameter(PARAM_QUERY,query)

@@ -1,9 +1,11 @@
-package com.example.engy.filmasia;
+package com.example.engy.filmasia.preferences;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.engy.filmasia.R;
 
 /**
  * Created by Engy on 2/17/2018.

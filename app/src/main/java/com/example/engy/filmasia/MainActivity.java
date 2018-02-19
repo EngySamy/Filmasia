@@ -2,11 +2,9 @@ package com.example.engy.filmasia;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.PreferenceManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -22,8 +20,12 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.engy.filmasia.connectToTheInternet.FilmQueryTask;
+import com.example.engy.filmasia.connectToTheInternet.Search;
+import com.example.engy.filmasia.preferences.SettingsActivity;
+import com.example.engy.filmasia.preferences.SettingsUtils;
+
 import java.net.URL;
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , SharedPreferences.OnSharedPreferenceChangeListener {  //1.to add trigger for pref change
@@ -125,7 +127,7 @@ public class MainActivity extends AppCompatActivity
         table.setVisibility(View.INVISIBLE);
         results.setText("searching ... ");
         String queryText=query.getText().toString();
-        URL url=Search.buildUrl(queryText);
+        URL url= Search.buildUrl(queryText);
         Toast.makeText(this,url.toString(),Toast.LENGTH_LONG).show();
         new FilmQueryTask(table,results, SettingsUtils.getShowYear()).execute(url);
 
