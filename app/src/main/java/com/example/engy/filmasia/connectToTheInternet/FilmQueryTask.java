@@ -20,12 +20,13 @@ import java.net.URL;
 
 public class FilmQueryTask extends AsyncTask<URL,Void,String> {
 
-    private TableLayout tableLayout;
-    private TextView status;
+    private TableLayout table;
+    private TextView stat;
+    private String json;
 
     public FilmQueryTask(TableLayout table,TextView stat,boolean year){
-        status=stat;
-        tableLayout=table;
+        this.stat=stat;
+        this.table=table;
     }
     @Override
     protected String doInBackground(URL... urls) {
@@ -43,6 +44,15 @@ public class FilmQueryTask extends AsyncTask<URL,Void,String> {
 
     @Override
     protected void onPostExecute(String s) {
+        json=s;
+        showResults(s,table,stat);
+    }
+
+    public String getStringResult(){
+        return json;
+    }
+
+    public static void showResults(String s,TableLayout tableLayout,TextView status){
         if(s!=null&&!s.equals("")){
             try {
                 JSONObject jsonObject=new JSONObject(s);

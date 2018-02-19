@@ -36,6 +36,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
         }
 
         ////To add validations to edit pref
+        // we use this listener as it's triggered before the data has been saved so we can check for it.
         Preference preference=findPreference(getString(R.string.pref_size_key));
         preference.setOnPreferenceChangeListener(this);
     }

@@ -3,6 +3,7 @@ package com.example.engy.filmasia;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.preference.PreferenceManager;
@@ -33,6 +34,10 @@ public class MainActivity extends AppCompatActivity
     EditText query;
     TextView results;
     TableLayout table;
+    String currentRes="";
+    FilmQueryTask queryTask;
+
+    private static final String LIFECYCLE_CALLBACK_TEXT_KEY = "callbacks";
 
 
     @Override
@@ -62,6 +67,13 @@ public class MainActivity extends AppCompatActivity
 
         /////
         initialize();
+        ///// Restore results
+        if(savedInstanceState!=null){
+            currentRes=savedInstanceState.getString(LIFECYCLE_CALLBACK_TEXT_KEY);
+            Toast.makeText(this,currentRes,Toast.LENGTH_SHORT).show();
+            FilmQueryTask.showResults(currentRes,table,results);
+        }
+        /////
         settingsSetup();
     }
 
@@ -128,8 +140,11 @@ public class MainActivity extends AppCompatActivity
         results.setText("searching ... ");
         String queryText=query.getText().toString();
         URL url= Search.buildUrl(queryText);
-        Toast.makeText(this,url.toString(),Toast.LENGTH_LONG).show();
-        new FilmQueryTask(table,results, SettingsUtils.getShowYear()).execute(url);
+        Toast.makeText(this,url.toString(),Toast.LENGTH_SHORT).show();
+        queryTask= new FilmQueryTask(table,results, SettingsUtils.getShowYear());
+        queryTask.execute(url);
+        //currentRes=queryTask.getStringResult();
+        //Toast.makeText(this,currentRes,Toast.LENGTH_LONG).show();
 
     }
 
@@ -181,5 +196,18 @@ public class MainActivity extends AppCompatActivity
     protected void onDestroy() {
         super.onDestroy();
         PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    ////////////
+
+
+    ///To save the current result so that if we rotate th screen the results still exist
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(queryTask!=null)
+            currentRes=queryTask.getStringResult();
+        outState.putString(LIFECYCLE_CALLBACK_TEXT_KEY,currentRes);
+        Toast.makeText(this,currentRes,Toast.LENGTH_SHORT).show();
     }
 }
