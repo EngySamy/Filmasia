@@ -1,4 +1,4 @@
-package com.example.engy.filmasia;
+package com.example.engy.filmasia.sqlite;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,8 +10,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
+import com.example.engy.filmasia.R;
 import com.example.engy.filmasia.sqlite.FilmasiaContract;
 import com.example.engy.filmasia.sqlite.FilmasiaDBHelper;
+import com.example.engy.filmasia.sqlite.FilmsAdapter;
 
 /**
  * Created by Engy on 2/20/2018.

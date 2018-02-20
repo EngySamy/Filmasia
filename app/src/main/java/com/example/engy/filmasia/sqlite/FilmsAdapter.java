@@ -1,7 +1,6 @@
-package com.example.engy.filmasia;
+package com.example.engy.filmasia.sqlite;
 
 import android.database.Cursor;
-import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +9,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.example.engy.filmasia.preferences.SettingsUtils;
-import com.example.engy.filmasia.sqlite.FilmasiaContract;
+import com.example.engy.filmasia.R;
 
 /**
  * Created by Engy on 2/20/2018.

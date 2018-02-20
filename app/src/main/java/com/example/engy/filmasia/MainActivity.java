@@ -3,7 +3,6 @@ package com.example.engy.filmasia;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.preference.PreferenceManager;
@@ -25,6 +24,7 @@ import com.example.engy.filmasia.connectToTheInternet.FilmQueryTask;
 import com.example.engy.filmasia.connectToTheInternet.Search;
 import com.example.engy.filmasia.preferences.SettingsActivity;
 import com.example.engy.filmasia.preferences.SettingsUtils;
+import com.example.engy.filmasia.sqlite.ViewHistoryActivity;
 
 import java.net.URL;
 
