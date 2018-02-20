@@ -36,5 +36,8 @@
     <string name="pref_size_title">Result Text Size</string>
     <string name="pref_size_key" translatable="false">change_size</string>
 
+    <string name="film_history">Films Search History</string>
+    <string name="history">History</string>
+
 
 </resources>

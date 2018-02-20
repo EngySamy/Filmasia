@@ -30,6 +30,11 @@
                 android:value=".MainActivity"
                 />
         </activity>
+
+        <activity android:name=".ViewHistoryActivity"
+            android:label="@string/history">
+
+        </activity>
     </application>
 
 </manifest>

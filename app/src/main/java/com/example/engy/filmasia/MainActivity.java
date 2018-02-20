@@ -141,10 +141,8 @@ public class MainActivity extends AppCompatActivity
         String queryText=query.getText().toString();
         URL url= Search.buildUrl(queryText);
         Toast.makeText(this,url.toString(),Toast.LENGTH_SHORT).show();
-        queryTask= new FilmQueryTask(table,results, SettingsUtils.getShowYear());
+        queryTask= new FilmQueryTask(table,results, this);
         queryTask.execute(url);
-        //currentRes=queryTask.getStringResult();
-        //Toast.makeText(this,currentRes,Toast.LENGTH_LONG).show();
 
     }
 
@@ -176,6 +174,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+            Intent historyIntent=new Intent(MainActivity.this,ViewHistoryActivity.class);
+            startActivity(historyIntent);
 
         } else if (id == R.id.nav_slideshow) {
 

@@ -1,12 +1,19 @@
 package com.example.engy.filmasia.connectToTheInternet;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.engy.filmasia.MainActivity;
 import com.example.engy.filmasia.preferences.SettingsUtils;
+import com.example.engy.filmasia.sqlite.FilmasiaContract;
+import com.example.engy.filmasia.sqlite.FilmasiaDBHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,10 +30,12 @@ public class FilmQueryTask extends AsyncTask<URL,Void,String> {
     private TableLayout table;
     private TextView stat;
     private String json;
+    static Context context;
 
-    public FilmQueryTask(TableLayout table,TextView stat,boolean year){
+    public FilmQueryTask(TableLayout table,TextView stat,Context context1){
         this.stat=stat;
         this.table=table;
+        this.context=context1;
     }
     @Override
     protected String doInBackground(URL... urls) {
@@ -62,8 +71,8 @@ public class FilmQueryTask extends AsyncTask<URL,Void,String> {
                 ((TextView) ( (TableRow)tableLayout.getChildAt(0)).getChildAt(1) ).setTextColor(SettingsUtils.getColor());
                 ((TextView) ( (TableRow)tableLayout.getChildAt(0)).getChildAt(1) ).setTextSize(SettingsUtils.getSize());
 
+                String year=jsonObject.getString("Year");
                 if(SettingsUtils.getShowYear()){
-                    String year=jsonObject.getString("Year");
                     (tableLayout.getChildAt(1)).setVisibility(View.VISIBLE);
                     ((TextView) ( (TableRow)tableLayout.getChildAt(1)).getChildAt(1) ).setText(year);
                     ((TextView) ( (TableRow)tableLayout.getChildAt(1)).getChildAt(1) ).setTextColor(SettingsUtils.getColor());
@@ -88,6 +97,29 @@ public class FilmQueryTask extends AsyncTask<URL,Void,String> {
 
                 tableLayout.setVisibility(View.VISIBLE);
                 status.setText("Done!");
+
+                ///save this to sqlite db
+                // use our helper to get ref to actual db
+                SQLiteDatabase db;
+                FilmasiaDBHelper dbHelper=new FilmasiaDBHelper(context);
+                db=dbHelper.getWritableDatabase();
+                //first check if this film exists befor in our history
+                String[] col={FilmasiaContract.FilmEntry.COLUMN_NAME};
+                Cursor check=db.query(
+                        FilmasiaContract.FilmEntry.TABLE_NAME,
+                        col, FilmasiaContract.FilmEntry.COLUMN_NAME+"=?",
+                        new String[]{title},
+                        null,null,null);
+                if(check.getCount()>0)
+                    return;
+
+                ContentValues cv= new ContentValues();
+                cv.put(FilmasiaContract.FilmEntry.COLUMN_NAME,title);
+                cv.put(FilmasiaContract.FilmEntry.COLUMN_TYPE,genre);
+                cv.put(FilmasiaContract.FilmEntry.COLUMN_YEAR,year);
+                cv.put(FilmasiaContract.FilmEntry.COLUMN_RATING,rating);
+                db.insert(FilmasiaContract.FilmEntry.TABLE_NAME,null,cv);
+
 
 
             } catch (JSONException e) {
