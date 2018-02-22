@@ -35,6 +35,22 @@
             android:label="@string/history">
 
         </activity>
+
+        <activity
+            android:name=".contentProviders.ToWatchActivity"
+            android:label="@string/to_watch"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".contentProviders.AddToWatchActivity"
+            android:label="@string/add_to_watch">
+        </activity>
+
+        <provider
+            android:authorities="com.example.engy.filmasia"
+            android:name=".contentProviders.ToWatchFilmContentProvider"
+            android:exported="false"/>
     </application>
 
 </manifest>
