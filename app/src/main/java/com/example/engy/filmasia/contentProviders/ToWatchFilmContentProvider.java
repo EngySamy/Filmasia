@@ -38,7 +38,6 @@ public class ToWatchFilmContentProvider extends ContentProvider {
     //2. build uri matcher to express the uris with int
     private static UriMatcher buildUriMatcher(){
         UriMatcher uriMatcher=new UriMatcher(UriMatcher.NO_MATCH);
-
         //for directory
         uriMatcher.addURI(FilmasiaContract.AUTHORITY,FilmasiaContract.PATH_TOWATCH,TO_WATCH);
         //for single row
