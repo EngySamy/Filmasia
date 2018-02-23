@@ -41,7 +41,8 @@ public class ToWatchAdapter extends RecyclerView.Adapter<ToWatchAdapter.FilmView
         holder.name.setText(dataCursor.getString(nameCol));
 
         int priorityCol=dataCursor.getColumnIndex(FilmasiaContract.ToWatchEntry.COLUMN_PRIORITY);
-        holder.priority.setText(dataCursor.getInt(priorityCol));
+        String pri=""+dataCursor.getInt(priorityCol);
+        holder.priority.setText(pri);
 
         int idCol=dataCursor.getColumnIndex(FilmasiaContract.ToWatchEntry._ID);
         holder.itemView.setTag(dataCursor.getInt(idCol));

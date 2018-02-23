@@ -39,6 +39,8 @@ public class AddToWatchActivity extends AppCompatActivity  {
         cv.put(FilmasiaContract.ToWatchEntry.COLUMN_NAME,name);
         cv.put(FilmasiaContract.ToWatchEntry.COLUMN_PRIORITY,mPriority);
 
+        //this insert function from the resolver call -using the uri- the appropriate provider, which is our implemented provider
+        //and call insert from it
         Uri uri=getContentResolver().insert(FilmasiaContract.ToWatchEntry.CONTENT_URI,cv);
 
         if(uri!=null){

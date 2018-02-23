@@ -1,7 +1,9 @@
 package com.example.engy.filmasia.contentProviders;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.LoaderManager;
@@ -12,9 +14,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.View;
 
 import com.example.engy.filmasia.R;
+import com.example.engy.filmasia.sqlite.FilmasiaContract;
 
 /**
  * Created by Engy on 2/22/2018.
@@ -48,8 +52,8 @@ public class ToWatchActivity extends AppCompatActivity implements LoaderManager.
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        //adapter=new ToWatchAdapter(this);
-        //recyclerView.setAdapter(adapter);
+        adapter=new ToWatchAdapter(this);
+        recyclerView.setAdapter(adapter);
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
@@ -60,6 +64,14 @@ public class ToWatchActivity extends AppCompatActivity implements LoaderManager.
             // Called when a user swipes left or right on a ViewHolder
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+                //delete the swiped item
+                int id=(int)viewHolder.itemView.getTag();
+                String stringId=""+id;
+                Uri uri=FilmasiaContract.ToWatchEntry.CONTENT_URI; //add the id to the content uri
+                uri=uri.buildUpon().appendPath(stringId).build();
+                ContentResolver contentResolver=getContentResolver();
+                contentResolver.delete(uri,null,null);
+                getSupportLoaderManager().restartLoader(TASK_LOADER_ID,null,ToWatchActivity.this);
 
             }
         }).attachToRecyclerView(recyclerView);
@@ -82,9 +94,28 @@ public class ToWatchActivity extends AppCompatActivity implements LoaderManager.
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         return new AsyncTaskLoader<Cursor>(this) {
+            Cursor mData = null;
+
+            @Override
+            protected void onStartLoading() {
+                if(mData!=null){
+                    deliverResult(mData);
+                }
+                else{
+                    forceLoad();
+                }
+            }
+
             @Override
             public Cursor loadInBackground() {
-                return null;
+                try {
+                    return getContentResolver().query(FilmasiaContract.ToWatchEntry.CONTENT_URI,
+                            null,null,null, FilmasiaContract.ToWatchEntry.COLUMN_PRIORITY);
+                }
+                catch (Exception e){
+                    Log.e("ToWatchActivity class","Failed to load data");
+                    return null;
+                }
             }
         };
     }
