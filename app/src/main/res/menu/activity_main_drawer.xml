@@ -5,15 +5,15 @@
         <item
             android:id="@+id/nav_to_watch"
             android:icon="@drawable/ic_menu_camera"
-            android:title="To Watch" />
+            android:title="To Watch List" />
         <item
             android:id="@+id/nav_history"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="History" />
+            android:title="Search History" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_chat"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Group Chat" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
@@ -26,10 +26,6 @@
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
         </menu>
     </item>
 

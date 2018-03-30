@@ -45,5 +45,10 @@
     <string name="add">Add</string>
     <string name="priority">Priority</string>
 
+    <string name="chat_hint">Type your message ..</string>
+    <string name="chat_button">Send</string>
+    <string name="chat_img">Pick a photo </string>
+    <string name="chat_title">Filmasia Chat</string>
+
 
 </resources>

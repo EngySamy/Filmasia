@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.example.engy.filmasia.connectToTheInternet.FilmQueryTask;
 import com.example.engy.filmasia.connectToTheInternet.Search;
 import com.example.engy.filmasia.contentProviders.ToWatchActivity;
+import com.example.engy.filmasia.firabase.ChatActivity;
 import com.example.engy.filmasia.preferences.SettingsActivity;
 import com.example.engy.filmasia.preferences.SettingsUtils;
 import com.example.engy.filmasia.sqlite.ViewHistoryActivity;
@@ -177,13 +178,12 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_history) {
             Intent historyIntent=new Intent(MainActivity.this,ViewHistoryActivity.class);
             startActivity(historyIntent);
-        } else if (id == R.id.nav_slideshow) {
-
+        } else if (id == R.id.nav_chat) {
+            Intent chatIntent=new Intent(MainActivity.this,ChatActivity.class);
+            startActivity(chatIntent);
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 
