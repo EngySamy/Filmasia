@@ -1,4 +1,4 @@
-package com.example.engy.filmasia.contentProviders;
+package com.example.engy.filmasia.contentProviders_fragments;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -21,9 +21,12 @@ public class ToWatchAdapter extends RecyclerView.Adapter<ToWatchAdapter.FilmView
 
     private Cursor dataCursor;
     private Context mContext;
+    private ToWatchMasterFragment.OnFilmClick mCallback;
 
-    ToWatchAdapter(Context context){
+
+    ToWatchAdapter(Context context,ToWatchMasterFragment.OnFilmClick click){
         mContext=context;
+        mCallback=click;
     }
 
     @Override
@@ -34,7 +37,7 @@ public class ToWatchAdapter extends RecyclerView.Adapter<ToWatchAdapter.FilmView
     }
 
     @Override
-    public void onBindViewHolder(FilmViewHolder holder, int position) {
+    public void onBindViewHolder(FilmViewHolder holder, final int position) {
         dataCursor.moveToPosition(position);
 
         int nameCol=dataCursor.getColumnIndex(FilmasiaContract.ToWatchEntry.COLUMN_NAME);
@@ -50,6 +53,16 @@ public class ToWatchAdapter extends RecyclerView.Adapter<ToWatchAdapter.FilmView
         int priorityColor=getPriorityColor(dataCursor.getInt(priorityCol));
         GradientDrawable background= (GradientDrawable)holder.priority.getBackground();
         background.setColor(priorityColor);
+
+        //to send notes to the master to view it
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dataCursor.moveToPosition(position);
+                int noteCol=dataCursor.getColumnIndex(FilmasiaContract.ToWatchEntry.COLUMN_NOTES);
+                mCallback.onFilmClick(dataCursor.getString(noteCol));
+            }
+        });
 
 
     }
@@ -90,7 +103,13 @@ public class ToWatchAdapter extends RecyclerView.Adapter<ToWatchAdapter.FilmView
         return temp;
     }
 
-    class FilmViewHolder extends RecyclerView.ViewHolder{
+    /*public String getNote(int position){
+        dataCursor.moveToPosition(position);
+        int noteCol=dataCursor.getColumnIndex(FilmasiaContract.ToWatchEntry.COLUMN_NOTES);
+        return dataCursor.getString(noteCol);
+    }*/
+
+     static class FilmViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         TextView priority;
 
@@ -99,5 +118,6 @@ public class ToWatchAdapter extends RecyclerView.Adapter<ToWatchAdapter.FilmView
             name=itemView.findViewById(R.id.to_watch_film_name);
             priority=itemView.findViewById(R.id.to_watch_film_priority);
         }
+
     }
 }

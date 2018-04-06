@@ -40,13 +40,12 @@
         </activity>
 
         <activity
-            android:name=".contentProviders.ToWatchActivity"
-            android:label="@string/to_watch"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".contentProviders_fragments.ToWatchActivity"
+            android:label="@string/to_watch">
         </activity>
 
         <activity
-            android:name=".contentProviders.AddToWatchActivity"
+            android:name=".contentProviders_fragments.AddToWatchActivity"
             android:label="@string/add_to_watch">
         </activity>
         <activity
@@ -54,9 +53,14 @@
             android:label="@string/chat_title">
         </activity>
 
+        <activity
+            android:name=".contentProviders_fragments.NotesActivity"
+            android:label="@string/notes">
+        </activity>
+
         <provider
             android:authorities="com.example.engy.filmasia"
-            android:name=".contentProviders.ToWatchFilmContentProvider"
+            android:name=".contentProviders_fragments.ToWatchFilmContentProvider"
             android:exported="false"/>
     </application>
 

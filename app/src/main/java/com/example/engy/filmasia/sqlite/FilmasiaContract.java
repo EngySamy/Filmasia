@@ -31,6 +31,7 @@ public class FilmasiaContract {
         public static final String TABLE_NAME="toWatch";
         public static final String COLUMN_NAME="name";
         public static final String COLUMN_PRIORITY="priority";
+        public static final String COLUMN_NOTES="notes";
 
     }
 }

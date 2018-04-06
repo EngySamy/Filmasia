@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/to_watch_film_edit_text"
-        android:hint="@string/add_to_watch_hint"
+        android:hint="@string/add_to_watch_name_hint"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -61,6 +61,15 @@
             android:layout_weight="1"
             android:onClick="onPrioritySelected"/>
     </RadioGroup>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/notes_edit_text_to_add"
+        android:hint="@string/add_to_watch_notes_hint"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
     <Button
         android:id="@+id/done_add_to_watch_button"
         android:layout_width="wrap_content"

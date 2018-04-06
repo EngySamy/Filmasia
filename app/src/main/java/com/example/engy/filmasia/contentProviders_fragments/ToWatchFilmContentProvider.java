@@ -1,4 +1,4 @@
-package com.example.engy.filmasia.contentProviders;
+package com.example.engy.filmasia.contentProviders_fragments;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;

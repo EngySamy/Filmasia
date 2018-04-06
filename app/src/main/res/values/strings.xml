@@ -41,7 +41,10 @@
     
     <string name="to_watch">To Watch</string>
     <string name="add_to_watch">Add To Watch Film</string>
-    <string name="add_to_watch_hint">Type your film to add to list .. </string>
+    <string name="add_to_watch_name_hint">Type your film to add to list .. </string>
+    <string name="add_to_watch_notes_hint">Type any notes you want .. </string>
+    <string name="film_notes">Your film notes </string>
+    <string name="notes">Notes</string>
     <string name="add">Add</string>
     <string name="priority">Priority</string>
 

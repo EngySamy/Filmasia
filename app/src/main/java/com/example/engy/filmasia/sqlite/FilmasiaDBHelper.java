@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class FilmasiaDBHelper extends SQLiteOpenHelper {
 
     public static final String DB_NAME="filmasia.db";
-    public static final int VERSION=2;
+    public static final int VERSION=3;
 
     public FilmasiaDBHelper(Context context){
         super(context,DB_NAME,null,VERSION);
@@ -35,6 +35,7 @@ public class FilmasiaDBHelper extends SQLiteOpenHelper {
                 FilmasiaContract.ToWatchEntry.TABLE_NAME +" ("+
                 FilmasiaContract.ToWatchEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 FilmasiaContract.ToWatchEntry.COLUMN_NAME + " TEXT NOT NULL, " +
+                FilmasiaContract.ToWatchEntry.COLUMN_NOTES + " TEXT NOT NULL, " +
                 FilmasiaContract.ToWatchEntry.COLUMN_PRIORITY + " INTEGER NOT NULL " + ");";
 
         sqLiteDatabase.execSQL(SQL_CREATE_TO_WATCH_TABLE);

@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 import com.example.engy.filmasia.connectToTheInternet.FilmQueryTask;
 import com.example.engy.filmasia.connectToTheInternet.Search;
-import com.example.engy.filmasia.contentProviders.ToWatchActivity;
+import com.example.engy.filmasia.contentProviders_fragments.ToWatchActivity;
 import com.example.engy.filmasia.firabase.ChatActivity;
 import com.example.engy.filmasia.preferences.SettingsActivity;
 import com.example.engy.filmasia.preferences.SettingsUtils;

@@ -1,4 +1,4 @@
-package com.example.engy.filmasia.contentProviders;
+package com.example.engy.filmasia.contentProviders_fragments;
 
 import android.content.ContentValues;
 import android.net.Uri;
@@ -32,12 +32,14 @@ public class AddToWatchActivity extends AppCompatActivity  {
 
     public void AddFilmToWatch(View view) {
         String name=((EditText)findViewById(R.id.to_watch_film_edit_text)).getText().toString();
-        if(name.length()==0){
+        String notes=((EditText) findViewById(R.id.notes_edit_text_to_add)).getText().toString();
+        if(name.length()==0 || notes.length()==0){
             return;
         }
         ContentValues cv=new ContentValues();
         cv.put(FilmasiaContract.ToWatchEntry.COLUMN_NAME,name);
         cv.put(FilmasiaContract.ToWatchEntry.COLUMN_PRIORITY,mPriority);
+        cv.put(FilmasiaContract.ToWatchEntry.COLUMN_NOTES,notes);
 
         //this insert function from the resolver call -using the uri- the appropriate provider, which is our implemented provider
         //and call insert from it
