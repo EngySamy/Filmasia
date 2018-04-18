@@ -39,9 +39,9 @@ public class ToWatchFilmContentProvider extends ContentProvider {
     private static UriMatcher buildUriMatcher(){
         UriMatcher uriMatcher=new UriMatcher(UriMatcher.NO_MATCH);
         //for directory
-        uriMatcher.addURI(FilmasiaContract.AUTHORITY,FilmasiaContract.PATH_TOWATCH,TO_WATCH);
+        uriMatcher.addURI(FilmasiaContract.AUTHORITY1,FilmasiaContract.PATH_TOWATCH,TO_WATCH);
         //for single row
-        uriMatcher.addURI(FilmasiaContract.AUTHORITY,FilmasiaContract.PATH_TOWATCH + "/#",TO_WATCH_WITH_ID);
+        uriMatcher.addURI(FilmasiaContract.AUTHORITY1,FilmasiaContract.PATH_TOWATCH + "/#",TO_WATCH_WITH_ID);
 
         return uriMatcher;
     }
@@ -83,10 +83,10 @@ public class ToWatchFilmContentProvider extends ContentProvider {
         switch (match) {
             case TO_WATCH:
                 // directory
-                return "vnd.android.cursor.dir" + "/" + FilmasiaContract.AUTHORITY + "/" + FilmasiaContract.PATH_TOWATCH;
+                return "vnd.android.cursor.dir" + "/" + FilmasiaContract.AUTHORITY1 + "/" + FilmasiaContract.PATH_TOWATCH;
             case TO_WATCH_WITH_ID:
                 // single item type
-                return "vnd.android.cursor.item" + "/" + FilmasiaContract.AUTHORITY + "/" + FilmasiaContract.PATH_TOWATCH;
+                return "vnd.android.cursor.item" + "/" + FilmasiaContract.AUTHORITY1 + "/" + FilmasiaContract.PATH_TOWATCH;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }

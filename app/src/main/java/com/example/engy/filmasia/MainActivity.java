@@ -24,6 +24,7 @@ import com.example.engy.filmasia.connectToTheInternet.FilmQueryTask;
 import com.example.engy.filmasia.connectToTheInternet.Search;
 import com.example.engy.filmasia.contentProviders_fragments.ToWatchActivity;
 import com.example.engy.filmasia.firabase.ChatActivity;
+import com.example.engy.filmasia.google_places_and_locations.CinemasActivity;
 import com.example.engy.filmasia.preferences.SettingsActivity;
 import com.example.engy.filmasia.preferences.SettingsUtils;
 import com.example.engy.filmasia.sqlite.ViewHistoryActivity;
@@ -183,8 +184,9 @@ public class MainActivity extends AppCompatActivity
             startActivity(chatIntent);
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
-
+        } else if (id == R.id.nav_cinemas) {
+            Intent cinemasIntent=new Intent(MainActivity.this, CinemasActivity.class);
+            startActivity(cinemasIntent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

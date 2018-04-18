@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class FilmasiaDBHelper extends SQLiteOpenHelper {
 
     public static final String DB_NAME="filmasia.db";
-    public static final int VERSION=3;
+    public static final int VERSION=4;
 
     public FilmasiaDBHelper(Context context){
         super(context,DB_NAME,null,VERSION);
@@ -40,12 +40,23 @@ public class FilmasiaDBHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(SQL_CREATE_TO_WATCH_TABLE);
 
+        // Create a table to hold the places data
+        final String SQL_CREATE_PLACES_TABLE = "CREATE TABLE " + FilmasiaContract.PlaceEntry.TABLE_NAME + " (" +
+                FilmasiaContract.PlaceEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                FilmasiaContract.PlaceEntry.COLUMN_PLACE_ID + " TEXT NOT NULL, " +
+                "UNIQUE (" + FilmasiaContract.PlaceEntry.COLUMN_PLACE_ID + ") ON CONFLICT REPLACE" +
+                "); ";
+
+        sqLiteDatabase.execSQL(SQL_CREATE_PLACES_TABLE);
+
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ FilmasiaContract.FilmEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ FilmasiaContract.ToWatchEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ FilmasiaContract.PlaceEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);
 
     }

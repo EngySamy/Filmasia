@@ -53,5 +53,10 @@
     <string name="chat_img">Pick a photo </string>
     <string name="chat_title">Filmasia Chat</string>
 
+    <string name="cinemas_title">Your Cinemas</string>
+    <string name="enable_geo">Enable Geofences</string>
+    <string name="loc_perm">Location Permission</string>
+    <string name="setting_enabled">settingEnabledGeo</string>
+
 
 </resources>
